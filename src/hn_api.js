@@ -5,7 +5,7 @@ const HN_URL = 'https://hacker-news.firebaseio.com/v0';
 
 
 export async function fetchWithSpinner(fetchMethod){
-    const spinner = ora('Fetchin HN stories...')
+    const spinner = ora('Fetching Hacker News stories...')
     spinner.start()
     const fetchContent =  await fetchMethod()
     spinner.succeed()

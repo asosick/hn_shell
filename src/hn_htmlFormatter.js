@@ -18,7 +18,7 @@ typical hn item:
 export function hnItemToHTML(item){
     return `<div>
     <h1>${item.title}</h1>
-    <h5>Score:${item.score}</h3>
+    <h3>Score:${item.score}</h3>
     ${item?.text != undefined ? `<h5>${item.text}</h5>`: ""}
     ${item?.url != undefined ? `<h5>${item.url}</h5>`: ""}
     </div>`

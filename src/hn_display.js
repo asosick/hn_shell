@@ -4,6 +4,7 @@ import figlet from 'figlet';
 import ora from 'ora';
 import {fetchWithSpinner, fetchTopStories} from './hn_api.js'
 import { getNItems } from './hn_util.js';
+import { hnItemToHTML } from './hn_htmlFormatter.js';
 import hermit from 'hermit';
 
 const STORY_PREVIEW_COUNT = 10
@@ -29,7 +30,9 @@ export async function displayStories() {
 
 export async function displayStory(story){
     console.log(`${story.title} - ${story.by}\nScore: ${story.score}\n${story?.url ? story.url : ""}`)
-    hermit(`<div>${story.text}</div>`, function (err, res) {
-        console.log(res); 
-      });
+    if(story?.text !== undefined){
+        hermit(hnItemToHTML(story), function (err, res) {
+            console.log(res); 
+          });
+    }
 }
